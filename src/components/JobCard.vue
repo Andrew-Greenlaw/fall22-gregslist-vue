@@ -1,8 +1,7 @@
 <template>
   <div class="card">
-    <img class="rounded-top" :src="car.imgUrl" :alt="car.make">
     <div class="card-body d-flex justify-content-between align-items-center">
-      <h5>{{car.make}} {{car.model}}</h5>
+      <h5>{{job.jobTitle}} {{job.company}}</h5>
       <div class="align-items-center d-flex gap-2">
         <img :src="seller.picture" :alt="seller.name" :title="seller.name" height="30" class="rounded">
         <i class="mdi mdi-delete-forever fs-4 selectable rounded" @click.stop="$emit('deleteClassified')"
@@ -14,27 +13,16 @@
 
 
 <script>
-import { computed } from '@vue/reactivity';
-import { onMounted } from 'vue';
-import { AppState } from '../AppState.js';
-import { Car } from '../models/Car.js';
+import { Job } from '../models/Job.js';
 import { SellerProfile } from '../models/SellerProfile.js';
 
 export default {
   props: {
-    car: { type: Car, required: true },
+    job: { type: Job, required: true },
     seller: { type: SellerProfile, required: true }
   },
-  setup(props, { emit }) {
-    onMounted(() => {
-      console.log('neat huh???')
-    })
-    return {
-      account: computed(() => AppState.account),
-      deleteClassified() {
-        emit('deleteClassified')
-      }
-    }
+  setup() {
+    return {}
   }
 }
 </script>

@@ -1,12 +1,9 @@
 <template>
   <div class="details" v-if="classified">
-
     <div class="col-10 m-auto" v-if="classified.listingType == 'Car'">
-
       <CarCard :car="classified.listing" :seller="classified.seller" />
     </div>
     <div>{{classified.listingType}}</div>
-
   </div>
   <div v-else>
     loading...

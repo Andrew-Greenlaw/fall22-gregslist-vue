@@ -1,15 +1,36 @@
 <template>
   <main class="container-fluid">
     <div class="row">
-      <div class="col-md-2 d-none d-md-block bg-dark text-light sidebar">
+      <div class="col-md-2 d-none d-md-block bg-dark text-light sidebar p-3">
         <Login />
-
-        <button class="btn" data-bs-target="#classifiedsCanvas" data-bs-toggle="offcanvas" v-if="account.id">
-          <span class="text-success lighten-30 selectable text-uppercase">
-            Add a Listing
-          </span>
-        </button>
-
+        <div class="mt-3">
+          <button class="btn" data-bs-target="#classifiedsCanvas" data-bs-toggle="offcanvas" v-if="account.id">
+            <span class="text-success lighten-30 selectable text-uppercase">
+              Add a Listing
+            </span>
+          </button>
+        </div>
+        <div class="mt-3">
+          <button class="btn" @click="showCars()">
+            <span class="text-success lighten-30 selectable text-uppercase">
+              Show Cars
+            </span>
+          </button>
+        </div>
+        <div class="mt-3">
+          <button class="btn" @click="showJobs()">
+            <span class="text-success lighten-30 selectable text-uppercase">
+              Show Jobs
+            </span>
+          </button>
+        </div>
+        <div class="mt-3">
+          <button class="btn" @click="showHouses()">
+            <span class="text-success lighten-30 selectable text-uppercase">
+              Show Houses
+            </span>
+          </button>
+        </div>
       </div>
       <div class="col-md-10 main-content">
         <router-view />
@@ -41,7 +62,10 @@ export default {
   setup() {
     return {
       appState: computed(() => AppState),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      showCars() {
+
+      }
     }
   },
   components: { Navbar, Login, ClassifiedForm }

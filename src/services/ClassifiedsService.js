@@ -1,12 +1,15 @@
 import { AppState } from "../AppState.js"
 import { Classified } from "../models/Classified.js"
+import { logger } from "../utils/Logger.js"
 import { SandboxApi } from "./AxiosService.js"
 
 class ClassifiedsService {
 
   async getClassifieds() {
     const res = await SandboxApi.get('api/classifieds')
+    logger.log(res.data)
     AppState.classifieds = res.data.map(c => new Classified(c))
+    logger.log(AppState.classifieds)
   }
 
 
